@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="theme-color" content="#5294e2">
+        <title>Redox Layout Editor</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="script.js"></script>
+    </head>
+
+    <body>
+        <h2>Redox Layout Editor</h2>
+
+        <div id="io-div">
+            <input type="file" id="file-input" accept=".json" />
+            <button onclick="loadLayout()">Load Layout</button>
+            <button onclick="saveLayout()">Save Layout</button>
+            <button onclick="exportLayout()">Export</button>
+        </div>
+
+        <table id="keyboard">
+            <tbody>
+                <tr>
+                    <td class="emph1" id="k-1-1"></td>
+                    <td id="k-1-2"></td>
+                    <td id="k-1-3"></td>
+                    <td id="k-1-4"></td>
+                    <td id="k-1-5"></td>
+                    <td id="k-1-6"></td>
+                    <td><div class="spacer"></div></td>
+                    <td><div class="spacer"></div></td>
+                    <td><div class="spacer"></div></td>
+                    <td><div class="spacer"></div></td>
+                    <td><div class="spacer"></div></td>
+                    <td id="k-1-12"></td>
+                    <td id="k-1-13"></td>
+                    <td id="k-1-14"></td>
+                    <td id="k-1-15"></td>
+                    <td id="k-1-16"></td>
+                    <td class="emph1" id="k-1-17"></td>
+                </tr>
+                <tr>
+                    <td class="emph1" id="k-2-1"></td>
+                    <td id="k-2-2"></td>
+                    <td id="k-2-3"></td>
+                    <td id="k-2-4"></td>
+                    <td id="k-2-5"></td>
+                    <td id="k-2-6"></td>
+                    <td id="k-2-7"></td>
+                    <td><div class="spacer"></div></td>
+                    <td><div class="spacer"></div></td>
+                    <td><div class="spacer"></div></td>
+                    <td id="k-2-11"></td>
+                    <td id="k-2-12"></td>
+                    <td id="k-2-13"></td>
+                    <td id="k-2-14"></td>
+                    <td id="k-2-15"></td>
+                    <td id="k-2-16"></td>
+                    <td class="emph1" id="k-2-17"></td>
+                </tr>
+                <tr>
+                    <td class="emph1" id="k-3-1"></td>
+                    <td id="k-3-2"></td>
+                    <td id="k-3-3"></td>
+                    <td id="k-3-4"></td>
+                    <td id="k-3-5"></td>
+                    <td id="k-3-6"></td>
+                    <td class="emph2" id="k-3-7"></td>
+                    <td><div class="spacer"></div></td>
+                    <td><div class="spacer"></div></td>
+                    <td><div class="spacer"></div></td>
+                    <td class="emph2" id="k-3-11"></td>
+                    <td id="k-3-12"></td>
+                    <td id="k-3-13"></td>
+                    <td id="k-3-14"></td>
+                    <td id="k-3-15"></td>
+                    <td id="k-3-16"></td>
+                    <td class="emph1" id="k-3-17"></td>
+                </tr>
+                <tr>
+                    <td class="emph1" id="k-4-1"></td>
+                    <td id="k-4-2"></td>
+                    <td id="k-4-3"></td>
+                    <td id="k-4-4"></td>
+                    <td id="k-4-5"></td>
+                    <td id="k-4-6"></td>
+                    <td id="k-4-7"></td>
+                    <td id="k-4-8"></td>
+                    <td><div class="spacer"></div></td>
+                    <td id="k-4-10"></td>
+                    <td id="k-4-11"></td>
+                    <td id="k-4-12"></td>
+                    <td id="k-4-13"></td>
+                    <td id="k-4-14"></td>
+                    <td id="k-4-15"></td>
+                    <td id="k-4-16"></td>
+                    <td class="emph1" id="k-4-17"></td>
+                </tr>
+                <tr>
+                    <td id="k-5-1"></td>
+                    <td id="k-5-2"></td>
+                    <td id="k-5-3"></td>
+                    <td id="k-5-4"></td>
+                    <td class="emph1" id="k-5-5" colspan=2></td>
+                    <td class="emph2" id="k-5-7"></td>
+                    <td class="emph2" id="k-5-8"></td>
+                    <td><div class="spacer"></div></td>
+                    <td class="emph2" id="k-5-10"></td>
+                    <td class="emph2" id="k-5-11"></td>
+                    <td class="emph1" id="k-5-12" colspan=2></td>
+                    <td id="k-5-14"></td>
+                    <td id="k-5-15"></td>
+                    <td id="k-5-16"></td>
+                    <td id="k-5-17"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <select id="select-template">
+            <!-- Special keys -->
+            <option selected value="_______"></option>
+            <option value="XXXXXXX">XXXX</option>
+            <!-- Basic keys -->
+            <option value="KC_A">A</option>
+            <option value="KC_B">B</option>
+            <option value="KC_C">C</option>
+            <option value="KC_D">D</option>
+            <option value="KC_E">E</option>
+            <option value="KC_F">F</option>
+            <option value="KC_G">G</option>
+            <option value="KC_H">H</option>
+            <option value="KC_I">I</option>
+            <option value="KC_J">J</option>
+            <option value="KC_K">K</option>
+            <option value="KC_L">L</option>
+            <option value="KC_M">M</option>
+            <option value="KC_N">N</option>
+            <option value="KC_O">O</option>
+            <option value="KC_P">P</option>
+            <option value="KC_Q">Q</option>
+            <option value="KC_R">R</option>
+            <option value="KC_S">S</option>
+            <option value="KC_T">T</option>
+            <option value="KC_U">U</option>
+            <option value="KC_V">V</option>
+            <option value="KC_W">W</option>
+            <option value="KC_X">X</option>
+            <option value="KC_Y">Y</option>
+            <option value="KC_Z">Z</option>
+            <option value="KC_1">1 !</option>
+            <option value="KC_2">2 @</option>
+            <option value="KC_3">3 #</option>
+            <option value="KC_4">4 $</option>
+            <option value="KC_5">5 %</option>
+            <option value="KC_6">6 ^</option>
+            <option value="KC_7">7 &</option>
+            <option value="KC_8">8 *</option>
+            <option value="KC_9">9 (</option>
+            <option value="KC_0">0 )</option>
+            <!-- F keys -->
+            <option value="KC_F1">F1</option>
+            <option value="KC_F2">F2</option>
+            <option value="KC_F3">F3</option>
+            <option value="KC_F4">F4</option>
+            <option value="KC_F5">F5</option>
+            <option value="KC_F6">F6</option>
+            <option value="KC_F7">F7</option>
+            <option value="KC_F8">F8</option>
+            <option value="KC_F9">F9</option>
+            <option value="KC_F10">F10</option>
+            <option value="KC_F11">F11</option>
+            <option value="KC_F12">F12</option>
+            <!-- Punctuation -->
+            <option value="KC_ENTER">Enter</option>
+            <option value="KC_ESCAPE">Esc</option>
+            <option value="KC_BSPACE">Backspace</option>
+            <option value="KC_TAB">Tab</option>
+            <option value="KC_SPACE">Space</option>
+            <option value="KC_MINUS">- _</option>
+            <option value="KC_EQUAL">= +</option>
+            <option value="KC_LBRACKET">[ {</option>
+            <option value="KC_RBRACKET">] }</option>
+            <option value="KC_BSLASH">\ |</option>
+            <option value="KC_SCOLON">; :</option>
+            <option value="KC_QUOTE">' "</option>
+            <option value="KC_GRAVE">` ~</option>
+            <option value="KC_COMMA">, <</option>
+            <option value="KC_DOT">. ></option>
+            <option value="KC_SLASH">/ ?</option>
+            <!-- Lock keys -->
+            <option value="KC_CAPSLOCK">Caps Lk</option>
+            <option value="KC_SCROLLLOCK">Scroll Lk</option>
+            <option value="KC_NUMLOCK">Num Lk</option>
+            <!-- Modifiers -->
+            <option value="KC_LCTRL">L Ctrl</option>
+            <option value="KC_LSHIFT">L Shift</option>
+            <option value="KC_LALT">L Alt</option>
+            <option value="KC_LGUI">L Meta</option>
+            <option value="KC_RCTRL">R Ctrl</option>
+            <option value="KC_RSHIFT">R Shift</option>
+            <option value="KC_RALT">R Alt</option>
+            <option value="KC_RGUI">R Meta</option>
+            <!-- Commands -->
+            <option value="KC_RIGHT">Right &rarr;</option>
+            <option value="KC_LEFT">Left &larr;</option>
+            <option value="KC_DOWN">Down &darr;</option>
+            <option value="KC_UP">Up &uarr;</option>
+            <option value="KC_PSCREEN">Print Screen</option>
+            <option value="KC_PAUSE">Pause</option>
+            <option value="KC_INSERT">Insert</option>
+            <option value="KC_HOME">Home</option>
+            <option value="KC_PGUP">Page Up</option>
+            <option value="KC_DELETE">Delete</option>
+            <option value="KC_END">End</option>
+            <option value="KC_PGDOWN">Page Dn</option>
+            <option value="KC_MENU">Menu</option>
+            <option value="KC_SYSREQ">SysReq</option>
+            <!-- Media keys -->
+            <option value="KC_SYSTEM_POWER">System Power Down</option>
+            <option value="KC_SYSTEM_SLEEP">System Sleep</option>
+            <option value="KC_SYSTEM_WAKE">System Wake</option>
+            <option value="KC_AUDIO_MUTE">Mute</option>
+            <option value="KC_AUDIO_VOL_UP">Vol Up</option>
+            <option value="KC_AUDIO_VOL_DOWN">Vol Down</option>
+            <option value="KC_MEDIA_NEXT_TRACK">Next Track</option>
+            <option value="KC_MEDIA_PREV_TRACK">Prev Track</option>
+            <option value="KC_MEDIA_STOP">Stop Track</option>
+            <option value="KC_MEDIA_PLAY_PAUSE">Play/Pause Track</option>
+            <option value="KC_MEDIA_SELECT">Launch Media Player</option>
+            <option value="KC_MEDIA_EJECT">Eject</option>
+            <option value="KC_MAIL">Launch Mail</option>
+            <option value="KC_CALCULATOR">Launch Calculator</option>
+            <option value="KC_MY_COMPUTER">Launch My Computer</option>
+            <option value="KC_WWW_SEARCH">Browser Search</option>
+            <option value="KC_WWW_HOME">Browser Home</option>
+            <option value="KC_WWW_BACK">Browser Back</option>
+            <option value="KC_WWW_FORWARD">Browser Forward</option>
+            <option value="KC_WWW_STOP">Browser Stop</option>
+            <option value="KC_WWW_REFRESH">Browser Refresh</option>
+            <option value="KC_WWW_FAVORITES">Browser Favorites</option>
+            <option value="KC_MEDIA_FAST_FORWARD">FFW Track</option>
+            <option value="KC_MEDIA_REWIND">Rew Track</option>
+            <option value="KC_BRIGHTNESS_UP">Brightness Up</option>
+            <option value="KC_BRIGHTNESS_DOWN">Brightness Down</option>
+            <!-- Number pad -->
+            <option value="KC_KP_SLASH">KP /</option>
+            <option value="KC_KP_ASTERISK">KP *</option>
+            <option value="KC_KP_MINUS">KP -</option>
+            <option value="KC_KP_PLUS">KP +</option>
+            <option value="KC_KP_ENTER">KP Enter</option>
+            <option value="KC_KP_1">KP 1 End</option>
+            <option value="KC_KP_2">KP 2 &darr;</option>
+            <option value="KC_KP_3">KP 3 PgDn</option>
+            <option value="KC_KP_4">KP 4 &larr;</option>
+            <option value="KC_KP_5">KP 5</option>
+            <option value="KC_KP_6">KP 6 &rarr;</option>
+            <option value="KC_KP_7">KP 7 Home</option>
+            <option value="KC_KP_8">KP 8 &uarr;</option>
+            <option value="KC_KP_9">KP 9 PgUp</option>
+            <option value="KC_KP_0">KP 0 Insert</option>
+            <option value="KC_KP_DOT">KP . Delete</option>
+            <option value="KC_KP_EQUAL">KP =</option>
+            <option value="KC_KP_COMMA">KP ,</option>
+        </select>
+
+        <div id="layers-div">
+            <div>
+                <label>Layers</label>
+                <button onclick="handleRemoveLayer()">Remove</button>
+                <button onclick="handleAddLayer()">Add</button>
+                <button onclick="handleRenameLayer()">Rename</button>
+            </div>
+            <div>
+                <select
+                    oninput="selectLayer(event.target.selectedIndex)"
+                    id="select-layer"
+                    size="5"
+                ></select>
+            </div>
+        </div>
+
+        <div id="footer">
+            <a href="https://github.com/tilleyd/redox-layout-editor">github</a>
+            <a href="https://github.com/mattdibi/redox-keyboard">redox</a>
+        </div>
+
+    </body>
+</html>
